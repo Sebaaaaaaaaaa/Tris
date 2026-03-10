@@ -1,0 +1,2 @@
+true = X
+false = O
