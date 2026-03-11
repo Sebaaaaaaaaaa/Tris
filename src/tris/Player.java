@@ -1,6 +1,6 @@
 package tris;
 
 public interface Player {
-    Integer[] play();
+    void play();
     Symbol getSymbol();
 }

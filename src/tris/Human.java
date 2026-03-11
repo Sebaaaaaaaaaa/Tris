@@ -12,9 +12,8 @@ public class Human implements Player{
     }
 
     @Override
-    public Integer[] play() {
-        
-        return null;
+    public void play() {
+
         
     }
 

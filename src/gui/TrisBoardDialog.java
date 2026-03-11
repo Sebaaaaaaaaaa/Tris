@@ -6,6 +6,7 @@ public class TrisBoardDialog extends javax.swing.JDialog {
     
     public TrisBoardDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.setVisible(false);
         initComponents();
     }
     
