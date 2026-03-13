@@ -46,7 +46,7 @@ public class MainTrisFrame extends javax.swing.JFrame {
         MainImage.setText(null);
         MainImage.setToolTipText("Click for match summary");
         MainImage.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
-        MainImage.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        MainImage.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         MainImage.setFocusable(false);
         MainImage.setPreferredSize(new java.awt.Dimension(840, 480));
         MainImage.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
@@ -92,6 +92,7 @@ public class MainTrisFrame extends javax.swing.JFrame {
         PvpButton.setBackground(new java.awt.Color(0, 0, 0));
         PvpButton.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
         PvpButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(127, 7, 153), 2, true));
+        PvpButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PvpButton.setFocusPainted(false);
         PvpButton.setFocusable(false);
         PvpButton.setPreferredSize(new java.awt.Dimension(200, 85));
@@ -123,6 +124,7 @@ public class MainTrisFrame extends javax.swing.JFrame {
 
         PveButton.setBackground(new java.awt.Color(0, 0, 0));
         PveButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(127, 7, 153), 2, true));
+        PveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PveButton.setFocusPainted(false);
         PveButton.setFocusable(false);
         PveButton.setPreferredSize(new java.awt.Dimension(200, 85));
@@ -159,8 +161,12 @@ public class MainTrisFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void PvpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PvpButtonActionPerformed
-        SelectStartingPlayerDialog selectStartingPlayerDialog = new SelectStartingPlayerDialog(this, rootPaneCheckingEnabled);
+        this.setVisible(false);
+        SelectStartingPlayerDialog selectStartingPlayerDialog = new SelectStartingPlayerDialog(this, true);
         selectStartingPlayerDialog.setVisible(true);
+        
+        PlayersNameSelectionDialog playersNameSelectionDialog = new PlayersNameSelectionDialog(this, true);
+        playersNameSelectionDialog.setVisible(true);
         
         TrisBoardDialog inputBoard = new TrisBoardDialog(this, false);
         

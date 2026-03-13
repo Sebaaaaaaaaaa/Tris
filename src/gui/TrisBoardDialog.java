@@ -2,11 +2,12 @@ package gui;
 
 public class TrisBoardDialog extends javax.swing.JDialog {
     
-      private final Integer[] coords = new Integer[2];
+    private final Integer[] coords = new Integer[2];
+    private final java.awt.Frame parent;
     
     public TrisBoardDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        this.setVisible(false);
+        this.parent = parent;
         initComponents();
     }
     
@@ -44,6 +45,14 @@ public class TrisBoardDialog extends javax.swing.JDialog {
         setPreferredSize(new java.awt.Dimension(700, 700));
         setResizable(false);
         setSize(new java.awt.Dimension(700, 700));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new java.awt.GridBagLayout());
@@ -269,6 +278,14 @@ public class TrisBoardDialog extends javax.swing.JDialog {
         coords[0] = 2;
         coords[1] = 2;
     }//GEN-LAST:event_box9ActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        parent.setVisible(true);
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        parent.setVisible(true);
+    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton box1;

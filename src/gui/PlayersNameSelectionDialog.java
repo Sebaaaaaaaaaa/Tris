@@ -1,5 +1,8 @@
 package gui;
 
+import javax.swing.ImageIcon;
+import tris.Main;
+
 public class PlayersNameSelectionDialog extends javax.swing.JDialog {    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PlayersNameSelectionDialog.class.getName());
 
@@ -26,17 +29,21 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setAlwaysOnTop(true);
         setFocusable(false);
+        setLocation(new java.awt.Point(600, 430));
+        setMaximumSize(new java.awt.Dimension(720, 220));
+        setMinimumSize(new java.awt.Dimension(720, 220));
         setModal(true);
-        setPreferredSize(new java.awt.Dimension(700, 250));
+        setPreferredSize(new java.awt.Dimension(720, 220));
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         player1Image.setBackground(new java.awt.Color(0, 0, 0));
-        player1Image.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 4, true));
+        player1Image.setFocusable(false);
         player1Image.setMinimumSize(new java.awt.Dimension(300, 100));
         player1Image.setPreferredSize(new java.awt.Dimension(300, 100));
         player1Image.setRequestFocusEnabled(false);
@@ -44,9 +51,11 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         jPanel1.add(player1Image, gridBagConstraints);
+        player1Image.setIcon(new ImageIcon(Main.class.getResource("/media/Player1.png")));
 
         player2Image.setBackground(new java.awt.Color(0, 0, 0));
         player2Image.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 4, true));
+        player2Image.setFocusable(false);
         player2Image.setMaximumSize(new java.awt.Dimension(300, 100));
         player2Image.setMinimumSize(new java.awt.Dimension(300, 100));
         player2Image.setPreferredSize(new java.awt.Dimension(300, 100));
@@ -59,9 +68,13 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         player1TextField.setFont(new java.awt.Font("Adwaita Mono", 1, 14)); // NOI18N
         player1TextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         player1TextField.setText("Player1");
+        player1TextField.setBorder(null);
+        player1TextField.setMaximumSize(new java.awt.Dimension(140, 35));
         player1TextField.setMinimumSize(new java.awt.Dimension(140, 35));
         player1TextField.setName(""); // NOI18N
         player1TextField.setPreferredSize(new java.awt.Dimension(140, 35));
+        player1TextField.setSelectionEnd(10);
+        player1TextField.setSelectionStart(0);
         player1TextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 player1TextFieldFocusLost(evt);
@@ -76,9 +89,12 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         player2TextField.setFont(new java.awt.Font("Adwaita Mono", 1, 14)); // NOI18N
         player2TextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         player2TextField.setText("Player2");
+        player2TextField.setBorder(null);
+        player2TextField.setMaximumSize(new java.awt.Dimension(140, 35));
         player2TextField.setMinimumSize(new java.awt.Dimension(140, 35));
-        player2TextField.setName(""); // NOI18N
         player2TextField.setPreferredSize(new java.awt.Dimension(140, 35));
+        player2TextField.setSelectionEnd(0);
+        player2TextField.setSelectionStart(10);
         player2TextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 player2TextFieldFocusLost(evt);
@@ -89,8 +105,16 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         gridBagConstraints.gridy = 3;
         jPanel1.add(player2TextField, gridBagConstraints);
 
+        okButton.setBackground(new java.awt.Color(255, 255, 0));
+        okButton.setFont(new java.awt.Font("Adwaita Mono", 1, 24)); // NOI18N
         okButton.setText("OK");
         okButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 4, true));
+        okButton.setBorderPainted(false);
+        okButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        okButton.setFocusable(false);
+        okButton.setMaximumSize(new java.awt.Dimension(34, 30));
+        okButton.setMinimumSize(new java.awt.Dimension(34, 30));
+        okButton.setPreferredSize(new java.awt.Dimension(34, 30));
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okButtonActionPerformed(evt);
@@ -101,7 +125,7 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         gridBagConstraints.gridy = 5;
         gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weighty = 0.5;
+        gridBagConstraints.weighty = 0.4;
         jPanel1.add(okButton, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -152,7 +176,7 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-
+        dispose();
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void player1TextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_player1TextFieldFocusLost

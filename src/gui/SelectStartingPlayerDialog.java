@@ -1,5 +1,7 @@
 package gui;
 
+import javax.swing.ImageIcon;
+import tris.Main;
 import tris.Symbol;
 
 public class SelectStartingPlayerDialog extends javax.swing.JDialog {
@@ -24,21 +26,33 @@ public class SelectStartingPlayerDialog extends javax.swing.JDialog {
         oButton = new javax.swing.JToggleButton();
         okButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setFocusable(false);
         setLocation(new java.awt.Point(760, 465));
-        setMaximumSize(new java.awt.Dimension(400, 150));
-        setMinimumSize(new java.awt.Dimension(400, 150));
-        setPreferredSize(new java.awt.Dimension(400, 150));
+        setMaximumSize(new java.awt.Dimension(350, 215));
+        setMinimumSize(new java.awt.Dimension(350, 215));
+        setPreferredSize(new java.awt.Dimension(350, 215));
         setResizable(false);
 
+        jPanel1.setBackground(new java.awt.Color(215, 47, 252));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
+        xButton.setBackground(new java.awt.Color(127, 7, 153));
         buttonGroup1.add(xButton);
         xButton.setSelected(true);
-        xButton.setText("x");
+        xButton.setBorder(null);
+        xButton.setBorderPainted(false);
+        xButton.setContentAreaFilled(false);
+        xButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        xButton.setFocusPainted(false);
+        xButton.setFocusable(false);
+        xButton.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                xButtonStateChanged(evt);
+            }
+        });
         xButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 xButtonActionPerformed(evt);
@@ -49,9 +63,14 @@ public class SelectStartingPlayerDialog extends javax.swing.JDialog {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(xButton, gridBagConstraints);
+        xButton.setIcon(new ImageIcon(Main.class.getResource("/media/X.png")));
 
+        oButton.setBackground(new java.awt.Color(127, 7, 153));
         buttonGroup1.add(oButton);
-        oButton.setText("o");
+        oButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(127, 7, 153), 2));
+        oButton.setBorderPainted(false);
+        oButton.setFocusPainted(false);
+        oButton.setFocusable(false);
         oButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 oButtonActionPerformed(evt);
@@ -62,8 +81,18 @@ public class SelectStartingPlayerDialog extends javax.swing.JDialog {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(oButton, gridBagConstraints);
+        oButton.setIcon(new ImageIcon(Main.class.getResource("/media/O.png")));
 
+        okButton.setBackground(new java.awt.Color(0, 0, 0));
+        okButton.setFont(new java.awt.Font("Adwaita Mono", 1, 24)); // NOI18N
+        okButton.setForeground(new java.awt.Color(255, 255, 255));
         okButton.setText("OK");
+        okButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 4, true));
+        okButton.setBorderPainted(false);
+        okButton.setFocusable(false);
+        okButton.setMaximumSize(new java.awt.Dimension(72, 15));
+        okButton.setMinimumSize(new java.awt.Dimension(72, 15));
+        okButton.setPreferredSize(new java.awt.Dimension(72, 15));
         okButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 okButtonActionPerformed(evt);
@@ -74,7 +103,7 @@ public class SelectStartingPlayerDialog extends javax.swing.JDialog {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.weighty = 0.4;
         jPanel1.add(okButton, gridBagConstraints);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -87,12 +116,20 @@ public class SelectStartingPlayerDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_okButtonActionPerformed
 
     private void oButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oButtonActionPerformed
+        oButton.setContentAreaFilled(false);
+        xButton.setContentAreaFilled(true);
         startingSymbol = Symbol.O;
     }//GEN-LAST:event_oButtonActionPerformed
 
     private void xButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xButtonActionPerformed
+        xButton.setContentAreaFilled(false);
+        oButton.setContentAreaFilled(true);
         startingSymbol = Symbol.X;
     }//GEN-LAST:event_xButtonActionPerformed
+
+    private void xButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_xButtonStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_xButtonStateChanged
 
     public Symbol getSelectedSymbol() {
         return startingSymbol;
