@@ -39,7 +39,7 @@ public class Game {
     }
 
     private boolean isGameOver() {
-        return board.checkWin() || board.checkDraw();
+        return board.checkDraw() || board.checkWin();
     }
     
     public Symbol getCurrentSymbol() {

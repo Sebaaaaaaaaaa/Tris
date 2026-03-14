@@ -5,15 +5,15 @@ import javax.swing.ImageIcon;
 import tris.Game;
 import tris.Human;
 import tris.Main;
-import tris.Symbol;
+import tris.PvPTableModel;
 
 public class MainTrisFrame extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MainTrisFrame.class.getName());
-    Game game;
+    private PvPTableModel playerDataHandler;
     
     public MainTrisFrame() {
         initComponents();
+        playerDataHandler = new PvPTableModel();
     }
 
     @SuppressWarnings("unchecked")
@@ -195,7 +195,7 @@ public class MainTrisFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_PveButtonMouseExited
 
     private void MainImageMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MainImageMouseClicked
-        // TODO add your handling code here:
+        new PvPTable(this, true, playerDataHandler).setVisible(true);
     }//GEN-LAST:event_MainImageMouseClicked
 
     private void MainImageMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MainImageMouseEntered

@@ -188,12 +188,18 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         if (text.length() > 10) {
             player1TextField.setText(text.substring(0, 10));
         }
+        if (text.equals(player2TextField.getText())) {
+            player1TextField.setText("Player1");
+        }
     }//GEN-LAST:event_player1TextFieldFocusLost
 
     private void player2TextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_player2TextFieldFocusLost
         String text = player2TextField.getText();
         if (text.length() > 10) {
             player2TextField.setText(text.substring(0, 10));
+        }
+        if (text.equals(player1TextField.getText())) {
+            player2TextField.setText("Player2");
         }
     }//GEN-LAST:event_player2TextFieldFocusLost
 

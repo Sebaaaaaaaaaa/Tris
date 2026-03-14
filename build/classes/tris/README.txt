@@ -1,2 +1,0 @@
-true = X
-false = O
