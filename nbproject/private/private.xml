@@ -5,14 +5,7 @@
         <group>
             <file>file:/home/Seba/NetBeansProjects/Tris/src/gui/MainTrisFrame.java</file>
             <file>file:/home/Seba/NetBeansProjects/Tris/src/gui/SelectStartingPlayerDialog.java</file>
-            <file>file:/home/Seba/NetBeansProjects/Tris/src/gui/DifficultySelectionDialog.java</file>
-            <file>file:/home/Seba/NetBeansProjects/Tris/src/gui/TrisBoardDialog.java</file>
-            <file>file:/home/Seba/NetBeansProjects/Tris/src/tris/Game.java</file>
-            <file>file:/home/Seba/NetBeansProjects/Tris/src/tris/Player.java</file>
-            <file>file:/home/Seba/NetBeansProjects/Tris/src/tris/Human.java</file>
-            <file>file:/home/Seba/NetBeansProjects/Tris/src/tris/TrisBoard.java</file>
             <file>file:/home/Seba/NetBeansProjects/Tris/src/gui/PlayersNameSelectionDialog.java</file>
-            <file>file:/home/Seba/NetBeansProjects/Tris/src/tris/Main.java</file>
         </group>
     </open-files>
 </project-private>

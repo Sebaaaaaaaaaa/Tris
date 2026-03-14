@@ -9,35 +9,24 @@ public class Game {
     private Player currentPlayer;
     private TrisBoardDialog inputBoard;
 
-    public Game(Player p1, Player p2, TrisBoardDialog b) {
+    public Game(Player p1, Player p2, java.awt.Frame p) {
         board = new TrisBoard();
-        inputBoard = b;
         player1 = p1;
         player2 = p2;
         currentPlayer = player1;
-    }
-
-    public void start() {
-        
+        inputBoard = new TrisBoardDialog(p, false, this);
         inputBoard.setVisible(true);
-        
-        do {
-            
-            currentPlayer.play();
-            makeMove(0, 0);
-            
-            nextTurn();
-               
-        } while(isGameOver());
-        
-        if(board.isDraw()) {
-            // TODO
-        } else {
-            // TODO
-        }
     }
     
-    public void nextTurn() {
+    private void nextTurn() {
+        if(isGameOver()) {
+            inputBoard.dispose();
+            if(board.isDraw()) {
+                System.out.println("Draw");
+            } else {
+                System.out.println(currentPlayer.getName());
+            }
+        }
         currentPlayer = (currentPlayer == player1) ? player2 : player1;
     }
 
@@ -46,11 +35,14 @@ public class Game {
         if(box.isEmpty()) {
             box.setSymbol(currentPlayer.getSymbol());
         }
+        nextTurn();
     }
 
-    public boolean isGameOver() {
+    private boolean isGameOver() {
         return board.checkWin() || board.checkDraw();
     }
-
-    public Player getCurrentPlayer() { return currentPlayer; }
+    
+    public Symbol getCurrentSymbol() {
+        return currentPlayer.getSymbol();
+    }
 }

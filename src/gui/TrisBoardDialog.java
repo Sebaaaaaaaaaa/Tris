@@ -1,18 +1,29 @@
 package gui;
 
+import javax.swing.ImageIcon;
+import tris.Game;
+import tris.Main;
+import tris.Symbol;
+
 public class TrisBoardDialog extends javax.swing.JDialog {
     
     private final Integer[] coords = new Integer[2];
     private final java.awt.Frame parent;
+    private final Game game;
     
-    public TrisBoardDialog(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
-        this.parent = parent;
+    public TrisBoardDialog(java.awt.Frame p, boolean modal, Game g) {
+        super(p, modal);
+        parent = p;
+        game = g;
         initComponents();
     }
     
-    public Integer[] getLastClickCoords() {
-        return coords;
+    public void play(int r, int c, javax.swing.JButton b) {
+        Symbol s = game.getCurrentSymbol();
+        b.setIcon(new ImageIcon(Main.class.getResource(((s == Symbol.O) ? "/media/O.png" : "/media/X.png"))));
+        b.setDisabledIcon(new ImageIcon(Main.class.getResource(((s == Symbol.O) ? "/media/O.png" : "/media/X.png"))));
+        b.setEnabled(false);
+        game.makeMove(r, c);
     }
 
     @SuppressWarnings("unchecked")
@@ -39,10 +50,11 @@ public class TrisBoardDialog extends javax.swing.JDialog {
         setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setFocusable(false);
-        setLocation(new java.awt.Point(610, 190));
-        setMinimumSize(new java.awt.Dimension(700, 700));
+        setLocation(new java.awt.Point(710, 290));
+        setMaximumSize(new java.awt.Dimension(500, 500));
+        setMinimumSize(new java.awt.Dimension(500, 500));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(700, 700));
+        setPreferredSize(new java.awt.Dimension(500, 500));
         setResizable(false);
         setSize(new java.awt.Dimension(700, 700));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -57,9 +69,14 @@ public class TrisBoardDialog extends javax.swing.JDialog {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        box1.setBackground(new java.awt.Color(127, 7, 153));
+        box1.setBackground(new java.awt.Color(255, 255, 204));
         box1.setBorder(null);
         box1.setBorderPainted(false);
+        box1.setFocusable(false);
+        box1.setIconTextGap(0);
+        box1.setMaximumSize(new java.awt.Dimension(100, 100));
+        box1.setMinimumSize(new java.awt.Dimension(100, 100));
+        box1.setPreferredSize(new java.awt.Dimension(100, 100));
         box1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 box1ActionPerformed(evt);
@@ -71,9 +88,13 @@ public class TrisBoardDialog extends javax.swing.JDialog {
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(box1, gridBagConstraints);
 
-        box2.setBackground(new java.awt.Color(127, 7, 153));
+        box2.setBackground(new java.awt.Color(255, 255, 204));
         box2.setBorder(null);
         box2.setBorderPainted(false);
+        box2.setFocusable(false);
+        box2.setMaximumSize(new java.awt.Dimension(100, 100));
+        box2.setMinimumSize(new java.awt.Dimension(100, 100));
+        box2.setPreferredSize(new java.awt.Dimension(100, 100));
         box2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 box2ActionPerformed(evt);
@@ -87,9 +108,13 @@ public class TrisBoardDialog extends javax.swing.JDialog {
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(box2, gridBagConstraints);
 
-        box3.setBackground(new java.awt.Color(127, 7, 153));
+        box3.setBackground(new java.awt.Color(255, 255, 204));
         box3.setBorder(null);
         box3.setBorderPainted(false);
+        box3.setFocusable(false);
+        box3.setMaximumSize(new java.awt.Dimension(100, 100));
+        box3.setMinimumSize(new java.awt.Dimension(100, 100));
+        box3.setPreferredSize(new java.awt.Dimension(100, 100));
         box3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 box3ActionPerformed(evt);
@@ -103,9 +128,13 @@ public class TrisBoardDialog extends javax.swing.JDialog {
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(box3, gridBagConstraints);
 
-        box4.setBackground(new java.awt.Color(127, 7, 153));
+        box4.setBackground(new java.awt.Color(255, 255, 204));
         box4.setBorder(null);
         box4.setBorderPainted(false);
+        box4.setFocusable(false);
+        box4.setMaximumSize(new java.awt.Dimension(100, 100));
+        box4.setMinimumSize(new java.awt.Dimension(100, 100));
+        box4.setPreferredSize(new java.awt.Dimension(100, 100));
         box4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 box4ActionPerformed(evt);
@@ -119,9 +148,10 @@ public class TrisBoardDialog extends javax.swing.JDialog {
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(box4, gridBagConstraints);
 
-        box5.setBackground(new java.awt.Color(127, 7, 153));
+        box5.setBackground(new java.awt.Color(255, 255, 204));
         box5.setBorder(null);
         box5.setBorderPainted(false);
+        box5.setFocusable(false);
         box5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 box5ActionPerformed(evt);
@@ -135,9 +165,13 @@ public class TrisBoardDialog extends javax.swing.JDialog {
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(box5, gridBagConstraints);
 
-        box6.setBackground(new java.awt.Color(127, 7, 153));
+        box6.setBackground(new java.awt.Color(255, 255, 204));
         box6.setBorder(null);
         box6.setBorderPainted(false);
+        box6.setFocusable(false);
+        box6.setMaximumSize(new java.awt.Dimension(100, 100));
+        box6.setMinimumSize(new java.awt.Dimension(100, 100));
+        box6.setPreferredSize(new java.awt.Dimension(100, 100));
         box6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 box6ActionPerformed(evt);
@@ -151,9 +185,13 @@ public class TrisBoardDialog extends javax.swing.JDialog {
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(box6, gridBagConstraints);
 
-        box7.setBackground(new java.awt.Color(127, 7, 153));
+        box7.setBackground(new java.awt.Color(255, 255, 204));
         box7.setBorder(null);
         box7.setBorderPainted(false);
+        box7.setFocusable(false);
+        box7.setMaximumSize(new java.awt.Dimension(100, 100));
+        box7.setMinimumSize(new java.awt.Dimension(100, 100));
+        box7.setPreferredSize(new java.awt.Dimension(100, 100));
         box7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 box7ActionPerformed(evt);
@@ -167,9 +205,13 @@ public class TrisBoardDialog extends javax.swing.JDialog {
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(box7, gridBagConstraints);
 
-        box8.setBackground(new java.awt.Color(127, 7, 153));
+        box8.setBackground(new java.awt.Color(255, 255, 204));
         box8.setBorder(null);
         box8.setBorderPainted(false);
+        box8.setFocusable(false);
+        box8.setMaximumSize(new java.awt.Dimension(100, 100));
+        box8.setMinimumSize(new java.awt.Dimension(100, 100));
+        box8.setPreferredSize(new java.awt.Dimension(100, 100));
         box8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 box8ActionPerformed(evt);
@@ -183,9 +225,13 @@ public class TrisBoardDialog extends javax.swing.JDialog {
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(box8, gridBagConstraints);
 
-        box9.setBackground(new java.awt.Color(127, 7, 153));
+        box9.setBackground(new java.awt.Color(255, 255, 204));
         box9.setBorder(null);
         box9.setBorderPainted(false);
+        box9.setFocusable(false);
+        box9.setMaximumSize(new java.awt.Dimension(100, 100));
+        box9.setMinimumSize(new java.awt.Dimension(100, 100));
+        box9.setPreferredSize(new java.awt.Dimension(100, 100));
         box9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 box9ActionPerformed(evt);
@@ -235,48 +281,39 @@ public class TrisBoardDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void box1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box1ActionPerformed
-        coords[0] = 0;
-        coords[1] = 0;
+        play(0, 0, box1);
     }//GEN-LAST:event_box1ActionPerformed
 
     private void box2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box2ActionPerformed
-        coords[0] = 0;
-        coords[1] = 1;
+        play(0, 1, box2);
     }//GEN-LAST:event_box2ActionPerformed
 
     private void box3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box3ActionPerformed
-        coords[0] = 0;
-        coords[1] = 2;
+        play(0, 2, box3);
     }//GEN-LAST:event_box3ActionPerformed
 
     private void box4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box4ActionPerformed
-        coords[0] = 1;
-        coords[1] = 0;
+        play(1, 0, box4);
     }//GEN-LAST:event_box4ActionPerformed
 
     private void box5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box5ActionPerformed
-        coords[0] = 1;
-        coords[1] = 1;
+        play(1, 1, box5);
     }//GEN-LAST:event_box5ActionPerformed
 
     private void box6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box6ActionPerformed
-        coords[0] = 1;
-        coords[1] = 2;
+        play(1, 2, box6);
     }//GEN-LAST:event_box6ActionPerformed
 
     private void box7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box7ActionPerformed
-        coords[0] = 2;
-        coords[1] = 0;
+        play(2, 0, box7);
     }//GEN-LAST:event_box7ActionPerformed
 
     private void box8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box8ActionPerformed
-        coords[0] = 2;
-        coords[1] = 1;
+        play(2, 1, box8);
     }//GEN-LAST:event_box8ActionPerformed
 
     private void box9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box9ActionPerformed
-        coords[0] = 2;
-        coords[1] = 2;
+        play(2, 2, box9);
     }//GEN-LAST:event_box9ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

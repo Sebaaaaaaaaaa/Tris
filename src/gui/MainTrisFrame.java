@@ -168,12 +168,10 @@ public class MainTrisFrame extends javax.swing.JFrame {
         PlayersNameSelectionDialog playersNameSelectionDialog = new PlayersNameSelectionDialog(this, true);
         playersNameSelectionDialog.setVisible(true);
         
-        TrisBoardDialog inputBoard = new TrisBoardDialog(this, false);
-        
-        game = new Game(new Human(selectStartingPlayerDialog.getSelectedSymbol(), inputBoard), 
-                new Human(selectStartingPlayerDialog.getSelectedSymbol().getOpposite(), inputBoard), inputBoard);
-        
-        game.start();
+        new Game(
+                new Human(selectStartingPlayerDialog.getSelectedSymbol(), playersNameSelectionDialog.getPlayer1Name()), 
+                new Human(selectStartingPlayerDialog.getSelectedSymbol().getOpposite(), playersNameSelectionDialog.getPlayer2Name()), 
+                this);
     }//GEN-LAST:event_PvpButtonActionPerformed
 
     private void PvpButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PvpButtonMouseEntered

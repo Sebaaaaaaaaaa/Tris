@@ -48,11 +48,6 @@ public class SelectStartingPlayerDialog extends javax.swing.JDialog {
         xButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         xButton.setFocusPainted(false);
         xButton.setFocusable(false);
-        xButton.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                xButtonStateChanged(evt);
-            }
-        });
         xButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 xButtonActionPerformed(evt);
@@ -126,10 +121,6 @@ public class SelectStartingPlayerDialog extends javax.swing.JDialog {
         oButton.setContentAreaFilled(true);
         startingSymbol = Symbol.X;
     }//GEN-LAST:event_xButtonActionPerformed
-
-    private void xButtonStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_xButtonStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_xButtonStateChanged
 
     public Symbol getSelectedSymbol() {
         return startingSymbol;

@@ -33,19 +33,19 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         setAlwaysOnTop(true);
         setFocusable(false);
         setLocation(new java.awt.Point(600, 430));
-        setMaximumSize(new java.awt.Dimension(720, 220));
-        setMinimumSize(new java.awt.Dimension(720, 220));
+        setMaximumSize(new java.awt.Dimension(700, 220));
+        setMinimumSize(new java.awt.Dimension(700, 220));
         setModal(true);
-        setPreferredSize(new java.awt.Dimension(720, 220));
+        setPreferredSize(new java.awt.Dimension(700, 220));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         player1Image.setBackground(new java.awt.Color(0, 0, 0));
-        player1Image.setFocusable(false);
-        player1Image.setMinimumSize(new java.awt.Dimension(300, 100));
-        player1Image.setPreferredSize(new java.awt.Dimension(300, 100));
+        player1Image.setMaximumSize(new java.awt.Dimension(310, 100));
+        player1Image.setMinimumSize(new java.awt.Dimension(310, 100));
+        player1Image.setPreferredSize(new java.awt.Dimension(310, 100));
         player1Image.setRequestFocusEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -54,15 +54,14 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         player1Image.setIcon(new ImageIcon(Main.class.getResource("/media/Player1.png")));
 
         player2Image.setBackground(new java.awt.Color(0, 0, 0));
-        player2Image.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 4, true));
-        player2Image.setFocusable(false);
-        player2Image.setMaximumSize(new java.awt.Dimension(300, 100));
-        player2Image.setMinimumSize(new java.awt.Dimension(300, 100));
-        player2Image.setPreferredSize(new java.awt.Dimension(300, 100));
+        player2Image.setMaximumSize(new java.awt.Dimension(310, 100));
+        player2Image.setMinimumSize(new java.awt.Dimension(310, 100));
+        player2Image.setPreferredSize(new java.awt.Dimension(310, 100));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
         jPanel1.add(player2Image, gridBagConstraints);
+        player2Image.setIcon(new ImageIcon(Main.class.getResource("/media/Player2.png")));
 
         player1TextField.setColumns(15);
         player1TextField.setFont(new java.awt.Font("Adwaita Mono", 1, 14)); // NOI18N
@@ -131,6 +130,7 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(filler1, gridBagConstraints);
@@ -145,6 +145,7 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(filler3, gridBagConstraints);
@@ -152,6 +153,7 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridheight = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(filler5, gridBagConstraints);
@@ -159,6 +161,7 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridheight = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(filler6, gridBagConstraints);
@@ -166,6 +169,7 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridheight = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(filler7, gridBagConstraints);
@@ -193,6 +197,14 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_player2TextFieldFocusLost
 
+    public String getPlayer1Name() {
+        return player1TextField.getText();
+    }
+    
+    public String getPlayer2Name() {
+        return player2TextField.getText();
+    }  
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
     private javax.swing.Box.Filler filler2;

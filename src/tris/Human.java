@@ -1,24 +1,21 @@
 package tris;
 
-import gui.TrisBoardDialog;
-
 public class Human implements Player{
     private Symbol symbol;
-    private TrisBoardDialog inputBoard;
+    private String name;
     
-    public Human(Symbol s, TrisBoardDialog b) {
+    public Human(Symbol s, String n) {
         symbol = s;
-        inputBoard = b;
-    }
-
-    @Override
-    public void play() {
-
-        
+        name = n;
     }
 
     @Override
     public Symbol getSymbol() {
         return symbol;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 }
