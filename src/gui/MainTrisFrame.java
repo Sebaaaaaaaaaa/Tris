@@ -171,7 +171,8 @@ public class MainTrisFrame extends javax.swing.JFrame {
         new Game(
                 new Human(selectStartingPlayerDialog.getSelectedSymbol(), playersNameSelectionDialog.getPlayer1Name()), 
                 new Human(selectStartingPlayerDialog.getSelectedSymbol().getOpposite(), playersNameSelectionDialog.getPlayer2Name()), 
-                this);
+                this,
+                playerDataHandler);
     }//GEN-LAST:event_PvpButtonActionPerformed
 
     private void PvpButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PvpButtonMouseEntered

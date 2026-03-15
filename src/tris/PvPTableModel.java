@@ -4,8 +4,14 @@ import java.util.Vector;
 import javax.swing.table.AbstractTableModel;
 
 public class PvPTableModel extends AbstractTableModel{
-    private Vector<PlayerStats> playersList = new Vector<PlayerStats>();
-    private static final String[] LIST_HEADER = {"Name", "Games played", "Wins", "Losses"};
+    
+    private final Vector<PlayerStats> playersList = new Vector<>();
+    private static final String[] LIST_HEADER = {"Name", "Games played", "Wins", "Losses", "Draws"};
+    
+    public PvPTableModel() {
+        playersList.add(new PlayerStats("Player"));
+        playersList.add(new PlayerStats("SuperRobot"));
+    }
     
     @Override
     public int getRowCount() {
@@ -14,7 +20,7 @@ public class PvPTableModel extends AbstractTableModel{
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 5;
     }
 
     @Override
@@ -33,6 +39,9 @@ public class PvPTableModel extends AbstractTableModel{
             case 3 -> {
                 return p.getLosses();
             }
+            case 4 -> {
+                return p.getDraws();
+            }
             default -> throw new AssertionError();
         }
     }
@@ -40,5 +49,28 @@ public class PvPTableModel extends AbstractTableModel{
     @Override
     public String getColumnName(int c) {
         return LIST_HEADER[c];
+    }
+    
+    private PlayerStats findPlayerStats(String n) {
+        for (PlayerStats p : playersList) {
+            if (p.getName().equals(n)) return p;
+        }
+        PlayerStats newPlayerStats = new PlayerStats(n);
+        playersList.add(newPlayerStats);
+        return newPlayerStats;
+    }
+    
+    public void addWinner(String w, String l) {
+        PlayerStats winner = findPlayerStats(w);
+        PlayerStats loser = findPlayerStats(l);
+        winner.addWin();
+        loser.addLoss();
+    }
+    
+    public void addDraw(String p1, String p2) {
+        PlayerStats player1 = findPlayerStats(p1);
+        PlayerStats player2 = findPlayerStats(p2);
+        player1.addDraw();
+        player2.addDraw();
     }
 }

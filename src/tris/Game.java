@@ -8,9 +8,11 @@ public class Game {
     private Player player2;
     private Player currentPlayer;
     private TrisBoardDialog inputBoard;
+    private PvPTableModel playerDataHandler;
 
-    public Game(Player p1, Player p2, java.awt.Frame p) {
+    public Game(Player p1, Player p2, java.awt.Frame p, PvPTableModel m) {
         board = new TrisBoard();
+        playerDataHandler = m;
         player1 = p1;
         player2 = p2;
         currentPlayer = player1;
@@ -22,8 +24,10 @@ public class Game {
         if(isGameOver()) {
             inputBoard.dispose();
             if(board.isDraw()) {
+                playerDataHandler.addDraw(player1.getName(), player2.getName());
                 System.out.println("Draw");
             } else {
+                playerDataHandler.addWinner(currentPlayer.getName(), ((currentPlayer == player1) ? player2 : player1).getName());
                 System.out.println(currentPlayer.getName());
             }
         }
