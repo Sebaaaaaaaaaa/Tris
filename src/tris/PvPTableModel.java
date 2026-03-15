@@ -1,16 +1,17 @@
 package tris;
 
-import java.util.Vector;
+import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
 public class PvPTableModel extends AbstractTableModel{
     
-    private final Vector<PlayerStats> playersList = new Vector<>();
+    private final ArrayList<PlayerStats> playersList;
     private static final String[] LIST_HEADER = {"Name", "Games played", "Wins", "Losses", "Draws"};
     
     public PvPTableModel() {
-        playersList.add(new PlayerStats("Player"));
-        playersList.add(new PlayerStats("SuperRobot"));
+        this.playersList = new ArrayList<>();
+        playersList.add(new PlayerStats("PLAYER"));
+        playersList.add(new PlayerStats("SUPER_ROBOT"));
     }
     
     @Override

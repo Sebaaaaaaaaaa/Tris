@@ -1,8 +1,8 @@
 package tris;
 
 public class Human implements Player{
-    private Symbol symbol;
-    private String name;
+    private final Symbol symbol;
+    private final String name;
     
     public Human(Symbol s, String n) {
         symbol = s;

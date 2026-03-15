@@ -1,15 +1,13 @@
 package gui;
 
 import java.awt.Color;
-import javax.swing.ImageIcon;
-import tris.Game;
+import tris.PvPGame;
 import tris.Human;
-import tris.Main;
 import tris.PvPTableModel;
 
 public class MainTrisFrame extends javax.swing.JFrame {
     
-    private PvPTableModel playerDataHandler;
+    private final PvPTableModel playerDataHandler;
     
     public MainTrisFrame() {
         initComponents();
@@ -43,6 +41,7 @@ public class MainTrisFrame extends javax.swing.JFrame {
         MainPanel.setBackground(new java.awt.Color(0, 0, 0));
         MainPanel.setLayout(new java.awt.GridBagLayout());
 
+        MainImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/mainImage.png"))); // NOI18N
         MainImage.setText(null);
         MainImage.setToolTipText("Click for match summary");
         MainImage.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
@@ -50,7 +49,6 @@ public class MainTrisFrame extends javax.swing.JFrame {
         MainImage.setFocusable(false);
         MainImage.setPreferredSize(new java.awt.Dimension(840, 480));
         MainImage.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        MainImage.setIcon(new ImageIcon(Main.class.getResource("/media/mainImage.png")));
         MainImage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MainImageMouseClicked(evt);
@@ -91,6 +89,7 @@ public class MainTrisFrame extends javax.swing.JFrame {
 
         PvpButton.setBackground(new java.awt.Color(0, 0, 0));
         PvpButton.setFont(new java.awt.Font("sansserif", 0, 24)); // NOI18N
+        PvpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/PvP.png"))); // NOI18N
         PvpButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(127, 7, 153), 2, true));
         PvpButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PvpButton.setFocusPainted(false);
@@ -109,7 +108,6 @@ public class MainTrisFrame extends javax.swing.JFrame {
                 PvpButtonActionPerformed(evt);
             }
         });
-        PvpButton.setIcon(new ImageIcon(Main.class.getResource("/media/PvP.png")));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -123,6 +121,7 @@ public class MainTrisFrame extends javax.swing.JFrame {
         jPanel1.add(filler6, gridBagConstraints);
 
         PveButton.setBackground(new java.awt.Color(0, 0, 0));
+        PveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/PvE.png"))); // NOI18N
         PveButton.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(127, 7, 153), 2, true));
         PveButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PveButton.setFocusPainted(false);
@@ -147,7 +146,6 @@ public class MainTrisFrame extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         jPanel1.add(PveButton, gridBagConstraints);
-        PveButton.setIcon(new ImageIcon(Main.class.getResource("/media/PvE.png")));
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -162,17 +160,16 @@ public class MainTrisFrame extends javax.swing.JFrame {
 
     private void PvpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PvpButtonActionPerformed
         this.setVisible(false);
-        SelectStartingPlayerDialog selectStartingPlayerDialog = new SelectStartingPlayerDialog(this, true);
-        selectStartingPlayerDialog.setVisible(true);
         
-        PlayersNameSelectionDialog playersNameSelectionDialog = new PlayersNameSelectionDialog(this, true);
-        playersNameSelectionDialog.setVisible(true);
+        PlayersSelectionDialog playersSelectionDialog = new PlayersSelectionDialog(this, true);
+        playersSelectionDialog.setVisible(true);
         
-        new Game(
-                new Human(selectStartingPlayerDialog.getSelectedSymbol(), playersNameSelectionDialog.getPlayer1Name()), 
-                new Human(selectStartingPlayerDialog.getSelectedSymbol().getOpposite(), playersNameSelectionDialog.getPlayer2Name()), 
+        new PvPGame(
+                new Human(playersSelectionDialog.getPlayer1Symbol(), playersSelectionDialog.getPlayer1Name()), 
+                new Human(playersSelectionDialog.getPlayer2Symbol(), playersSelectionDialog.getPlayer2Name()), 
                 this,
                 playerDataHandler);
+
     }//GEN-LAST:event_PvpButtonActionPerformed
 
     private void PvpButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PvpButtonMouseEntered

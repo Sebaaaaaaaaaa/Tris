@@ -2,7 +2,7 @@ package tris;
 
 public class PlayerStats {
     
-    private String name;
+    private final String name;
     private Integer wins;
     private Integer losses;
     private Integer draws;

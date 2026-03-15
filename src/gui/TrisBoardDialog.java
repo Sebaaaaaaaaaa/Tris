@@ -1,17 +1,16 @@
 package gui;
 
 import javax.swing.ImageIcon;
-import tris.Game;
+import tris.PvPGame;
 import tris.Main;
 import tris.Symbol;
 
 public class TrisBoardDialog extends javax.swing.JDialog {
     
-    private final Integer[] coords = new Integer[2];
     private final java.awt.Frame parent;
-    private final Game game;
+    private final PvPGame game;
     
-    public TrisBoardDialog(java.awt.Frame p, boolean modal, Game g) {
+    public TrisBoardDialog(java.awt.Frame p, boolean modal, PvPGame g) {
         super(p, modal);
         parent = p;
         game = g;
@@ -46,7 +45,7 @@ public class TrisBoardDialog extends javax.swing.JDialog {
         filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         filler4 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setAlwaysOnTop(true);
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setFocusable(false);
@@ -60,9 +59,6 @@ public class TrisBoardDialog extends javax.swing.JDialog {
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosed(java.awt.event.WindowEvent evt) {
                 formWindowClosed(evt);
-            }
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
             }
         });
 
@@ -319,10 +315,6 @@ public class TrisBoardDialog extends javax.swing.JDialog {
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         parent.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        parent.setVisible(true);
-    }//GEN-LAST:event_formWindowClosing
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton box1;

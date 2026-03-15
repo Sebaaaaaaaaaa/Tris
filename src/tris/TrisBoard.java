@@ -19,8 +19,8 @@ public class TrisBoard {
     
     public boolean checkDraw() {
         for(Box[] row : trisBoard)
-            for(Box b : row)
-                if(b.isEmpty()) return draw;
+            for(Box box : row)
+                if(box.isEmpty()) return draw;
         draw = true;
         return draw;
     }
@@ -49,7 +49,7 @@ public class TrisBoard {
 
     public void reset() {
         for(Box[] row : trisBoard)
-            for(Box b : row)
-                b.clear();
+            for(Box box : row)
+                box.clear();
     }
 }

@@ -4,7 +4,7 @@ public class SuperRobot implements Player {
 
     @Override
     public String getName() {
-        return "SuperRobot";
+        return "sUPER_ROBOT";
     }
 
     

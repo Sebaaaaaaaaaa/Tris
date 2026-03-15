@@ -1,12 +1,13 @@
 package gui;
 
-import javax.swing.ImageIcon;
-import tris.Main;
+import javax.swing.JOptionPane;
+import tris.Symbol;
 
-public class PlayersNameSelectionDialog extends javax.swing.JDialog {    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PlayersNameSelectionDialog.class.getName());
+public class PlayersSelectionDialog extends javax.swing.JDialog {    
 
-    public PlayersNameSelectionDialog(java.awt.Frame parent, boolean modal) {
+    private Symbol player1Symbol = Symbol.X;
+    
+    public PlayersSelectionDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -16,11 +17,10 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        symbolSelectionButtonGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         player1Image = new javax.swing.JLabel();
         player2Image = new javax.swing.JLabel();
-        player1TextField = new javax.swing.JTextField();
-        player2TextField = new javax.swing.JTextField();
         okButton = new javax.swing.JButton();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
@@ -28,21 +28,28 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         filler5 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         filler6 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         filler7 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
+        jPanel2 = new javax.swing.JPanel();
+        player1TextField = new javax.swing.JTextField();
+        player1SymbolButton = new javax.swing.JToggleButton();
+        jPanel3 = new javax.swing.JPanel();
+        player2TextField = new javax.swing.JTextField();
+        player2SymbolButton = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setAlwaysOnTop(true);
         setFocusable(false);
         setLocation(new java.awt.Point(600, 430));
-        setMaximumSize(new java.awt.Dimension(700, 220));
-        setMinimumSize(new java.awt.Dimension(700, 220));
+        setMaximumSize(new java.awt.Dimension(700, 300));
+        setMinimumSize(new java.awt.Dimension(700, 300));
         setModal(true);
-        setPreferredSize(new java.awt.Dimension(700, 220));
+        setPreferredSize(new java.awt.Dimension(700, 300));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         player1Image.setBackground(new java.awt.Color(0, 0, 0));
+        player1Image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/Player1.png"))); // NOI18N
         player1Image.setMaximumSize(new java.awt.Dimension(310, 100));
         player1Image.setMinimumSize(new java.awt.Dimension(310, 100));
         player1Image.setPreferredSize(new java.awt.Dimension(310, 100));
@@ -51,9 +58,9 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         jPanel1.add(player1Image, gridBagConstraints);
-        player1Image.setIcon(new ImageIcon(Main.class.getResource("/media/Player1.png")));
 
         player2Image.setBackground(new java.awt.Color(0, 0, 0));
+        player2Image.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/Player2.png"))); // NOI18N
         player2Image.setMaximumSize(new java.awt.Dimension(310, 100));
         player2Image.setMinimumSize(new java.awt.Dimension(310, 100));
         player2Image.setPreferredSize(new java.awt.Dimension(310, 100));
@@ -61,48 +68,6 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
         jPanel1.add(player2Image, gridBagConstraints);
-        player2Image.setIcon(new ImageIcon(Main.class.getResource("/media/Player2.png")));
-
-        player1TextField.setColumns(15);
-        player1TextField.setFont(new java.awt.Font("Adwaita Mono", 1, 14)); // NOI18N
-        player1TextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        player1TextField.setText("Player1");
-        player1TextField.setBorder(null);
-        player1TextField.setMaximumSize(new java.awt.Dimension(140, 35));
-        player1TextField.setMinimumSize(new java.awt.Dimension(140, 35));
-        player1TextField.setName(""); // NOI18N
-        player1TextField.setPreferredSize(new java.awt.Dimension(140, 35));
-        player1TextField.setSelectionEnd(10);
-        player1TextField.setSelectionStart(0);
-        player1TextField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                player1TextFieldFocusLost(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        jPanel1.add(player1TextField, gridBagConstraints);
-
-        player2TextField.setColumns(15);
-        player2TextField.setFont(new java.awt.Font("Adwaita Mono", 1, 14)); // NOI18N
-        player2TextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        player2TextField.setText("Player2");
-        player2TextField.setBorder(null);
-        player2TextField.setMaximumSize(new java.awt.Dimension(140, 35));
-        player2TextField.setMinimumSize(new java.awt.Dimension(140, 35));
-        player2TextField.setPreferredSize(new java.awt.Dimension(140, 35));
-        player2TextField.setSelectionEnd(0);
-        player2TextField.setSelectionStart(10);
-        player2TextField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                player2TextFieldFocusLost(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 3;
-        jPanel1.add(player2TextField, gridBagConstraints);
 
         okButton.setBackground(new java.awt.Color(255, 255, 0));
         okButton.setFont(new java.awt.Font("Adwaita Mono", 1, 24)); // NOI18N
@@ -174,34 +139,136 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(filler7, gridBagConstraints);
 
+        jPanel2.setFocusable(false);
+        jPanel2.setOpaque(false);
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        player1TextField.setFont(new java.awt.Font("Adwaita Mono", 1, 36)); // NOI18N
+        player1TextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        player1TextField.setText("PLAYER1");
+        player1TextField.setBorder(null);
+        player1TextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                player1TextFieldFocusLost(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel2.add(player1TextField, gridBagConstraints);
+
+        player1SymbolButton.setBackground(new java.awt.Color(0, 0, 0));
+        symbolSelectionButtonGroup.add(player1SymbolButton);
+        player1SymbolButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/smaller_O.png"))); // NOI18N
+        player1SymbolButton.setSelected(true);
+        player1SymbolButton.setBorder(null);
+        player1SymbolButton.setBorderPainted(false);
+        player1SymbolButton.setContentAreaFilled(false);
+        player1SymbolButton.setFocusable(false);
+        player1SymbolButton.setMaximumSize(new java.awt.Dimension(55, 55));
+        player1SymbolButton.setMinimumSize(new java.awt.Dimension(55, 55));
+        player1SymbolButton.setPreferredSize(new java.awt.Dimension(55, 55));
+        player1SymbolButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/media/smaller_X.png"))); // NOI18N
+        player1SymbolButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                player1SymbolButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 1.0;
+        jPanel2.add(player1SymbolButton, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel1.add(jPanel2, gridBagConstraints);
+
+        jPanel3.setOpaque(false);
+        jPanel3.setLayout(new java.awt.GridBagLayout());
+
+        player2TextField.setFont(new java.awt.Font("Adwaita Mono", 1, 36)); // NOI18N
+        player2TextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        player2TextField.setText("PLAYER2");
+        player2TextField.setBorder(null);
+        player2TextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                player2TextFieldFocusLost(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        jPanel3.add(player2TextField, gridBagConstraints);
+
+        player2SymbolButton.setBackground(new java.awt.Color(0, 0, 0));
+        symbolSelectionButtonGroup.add(player2SymbolButton);
+        player2SymbolButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/smaller_O.png"))); // NOI18N
+        player2SymbolButton.setBorder(null);
+        player2SymbolButton.setContentAreaFilled(false);
+        player2SymbolButton.setFocusable(false);
+        player2SymbolButton.setMaximumSize(new java.awt.Dimension(55, 55));
+        player2SymbolButton.setMinimumSize(new java.awt.Dimension(55, 55));
+        player2SymbolButton.setPreferredSize(new java.awt.Dimension(55, 55));
+        player2SymbolButton.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/media/smaller_X.png"))); // NOI18N
+        player2SymbolButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                player2SymbolButtonActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 1.0;
+        jPanel3.add(player2SymbolButton, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel1.add(jPanel3, gridBagConstraints);
+
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
-        dispose();
+        if(player1TextField.getText().equals(player2TextField.getText())) {
+            JOptionPane.showMessageDialog(
+               this,
+                "Players names MUST be different...",
+                "Error",
+                JOptionPane.ERROR_MESSAGE
+            );
+        } else {
+            dispose();
+        }
     }//GEN-LAST:event_okButtonActionPerformed
+
+    private void player1SymbolButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player1SymbolButtonActionPerformed
+        player1Symbol = Symbol.X;
+    }//GEN-LAST:event_player1SymbolButtonActionPerformed
 
     private void player1TextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_player1TextFieldFocusLost
         String text = player1TextField.getText();
-        if (text.length() > 10) {
-            player1TextField.setText(text.substring(0, 10));
-        }
-        if (text.equals(player2TextField.getText())) {
-            player1TextField.setText("Player1");
-        }
+        if (text.length() > 10) text = text.substring(0, 10);
+        player1TextField.setText(text.toUpperCase());
     }//GEN-LAST:event_player1TextFieldFocusLost
 
     private void player2TextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_player2TextFieldFocusLost
         String text = player2TextField.getText();
-        if (text.length() > 10) {
-            player2TextField.setText(text.substring(0, 10));
-        }
-        if (text.equals(player1TextField.getText())) {
-            player2TextField.setText("Player2");
-        }
+        if (text.length() > 10) text = text.substring(0, 10);
+        player2TextField.setText(text.toUpperCase());
     }//GEN-LAST:event_player2TextFieldFocusLost
+
+    private void player2SymbolButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player2SymbolButtonActionPerformed
+        player1Symbol = Symbol.O;
+    }//GEN-LAST:event_player2SymbolButtonActionPerformed
 
     public String getPlayer1Name() {
         return player1TextField.getText();
@@ -209,7 +276,15 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
     
     public String getPlayer2Name() {
         return player2TextField.getText();
-    }  
+    }
+    
+    public Symbol getPlayer1Symbol() {
+        return player1Symbol;
+    }
+    
+    public Symbol getPlayer2Symbol() {
+        return player1Symbol.getOpposite();
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.Box.Filler filler1;
@@ -219,10 +294,15 @@ public class PlayersNameSelectionDialog extends javax.swing.JDialog {
     private javax.swing.Box.Filler filler6;
     private javax.swing.Box.Filler filler7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JButton okButton;
     private javax.swing.JLabel player1Image;
+    private javax.swing.JToggleButton player1SymbolButton;
     private javax.swing.JTextField player1TextField;
     private javax.swing.JLabel player2Image;
+    private javax.swing.JToggleButton player2SymbolButton;
     private javax.swing.JTextField player2TextField;
+    private javax.swing.ButtonGroup symbolSelectionButtonGroup;
     // End of variables declaration//GEN-END:variables
 }

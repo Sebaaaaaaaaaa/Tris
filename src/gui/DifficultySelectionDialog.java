@@ -2,13 +2,8 @@ package gui;
 
 public class DifficultySelectionDialog extends javax.swing.JDialog {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(DifficultySelectionDialog.class.getName());
-    private java.awt.Frame parent;
-    
-    
     public DifficultySelectionDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        this.parent = parent;
         initComponents();
     }
 
@@ -38,6 +33,11 @@ public class DifficultySelectionDialog extends javax.swing.JDialog {
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         buttonGroup1.add(easyDifficultyButton);
+        easyDifficultyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                easyDifficultyButtonActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
@@ -88,17 +88,21 @@ public class DifficultySelectionDialog extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void impossibleDifficultyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_impossibleDifficultyButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_impossibleDifficultyButtonActionPerformed
-
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         dispose();
     }//GEN-LAST:event_okButtonActionPerformed
 
+    private void easyDifficultyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_easyDifficultyButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_easyDifficultyButtonActionPerformed
+
     private void mediumDifficultyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumDifficultyButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mediumDifficultyButtonActionPerformed
+
+    private void impossibleDifficultyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_impossibleDifficultyButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_impossibleDifficultyButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
