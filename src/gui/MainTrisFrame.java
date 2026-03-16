@@ -3,6 +3,7 @@ package gui;
 import java.awt.Color;
 import tris.PvPGame;
 import tris.Human;
+import tris.PvEGame;
 import tris.PvPTableModel;
 
 public class MainTrisFrame extends javax.swing.JFrame {
@@ -185,7 +186,12 @@ public class MainTrisFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_PveButtonMouseEntered
 
     private void PveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PveButtonActionPerformed
-        new DifficultySelectionDialog(this, rootPaneCheckingEnabled).setVisible(rootPaneCheckingEnabled);
+        this.setVisible(false);
+        
+        DifficultySelectionDialog difficultySelectionDialog = new DifficultySelectionDialog(this, true);
+        difficultySelectionDialog.setVisible(true);
+        
+        new PvEGame(this, playerDataHandler, difficultySelectionDialog.getDifficulty(), difficultySelectionDialog.isPlayerStarting());
     }//GEN-LAST:event_PveButtonActionPerformed
 
     private void PveButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PveButtonMouseExited

@@ -52,4 +52,8 @@ public class TrisBoard {
             for(Box box : row)
                 box.clear();
     }
+    
+    public Boolean isEmpty(int row, int col) {
+        return (this.getBox(row, col).getSymbol() == Symbol.EMPTY);
+    }
 }

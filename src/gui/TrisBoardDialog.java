@@ -1,30 +1,39 @@
 package gui;
 
 import javax.swing.ImageIcon;
-import tris.PvPGame;
+import javax.swing.JButton;
+import tris.Game;
 import tris.Main;
 import tris.Symbol;
 
 public class TrisBoardDialog extends javax.swing.JDialog {
     
     private final java.awt.Frame parent;
-    private final PvPGame game;
+    private final Game game;
+    private final JButton[] buttonsList;
     
-    public TrisBoardDialog(java.awt.Frame p, boolean modal, PvPGame g) {
-        super(p, modal);
-        parent = p;
-        game = g;
+    public TrisBoardDialog(java.awt.Frame parent, boolean modal, Game game) {
+        super(parent, modal);
+        this.parent = parent;
+        this.game = game;
         initComponents();
+        buttonsList = new JButton[]{box1, box2, box3, box4, box5, box6, box7, box8, box9};
     }
     
-    public void play(int r, int c, javax.swing.JButton b) {
-        Symbol s = game.getCurrentSymbol();
-        b.setIcon(new ImageIcon(Main.class.getResource(((s == Symbol.O) ? "/media/O.png" : "/media/X.png"))));
-        b.setDisabledIcon(new ImageIcon(Main.class.getResource(((s == Symbol.O) ? "/media/O.png" : "/media/X.png"))));
-        b.setEnabled(false);
-        game.makeMove(r, c);
+    public void play(int row, int col) {
+        setCorrespondingBox(row, col);
+        game.makePlayerMove(row, col);
     }
 
+    public void setCorrespondingBox(int row, int col) {
+        Symbol currentSymbol = game.getCurrentSymbol();
+        int boxIndex = row * 3 + col;
+        JButton clickedButton = buttonsList[boxIndex];
+        clickedButton.setIcon(new ImageIcon(Main.class.getResource(((currentSymbol == Symbol.O) ? "/media/O.png" : "/media/X.png"))));
+        clickedButton.setDisabledIcon(new ImageIcon(Main.class.getResource(((currentSymbol == Symbol.O) ? "/media/O.png" : "/media/X.png"))));
+        clickedButton.setEnabled(false);
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -277,39 +286,39 @@ public class TrisBoardDialog extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void box1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box1ActionPerformed
-        play(0, 0, box1);
+        play(0, 0);
     }//GEN-LAST:event_box1ActionPerformed
 
     private void box2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box2ActionPerformed
-        play(0, 1, box2);
+        play(0, 1);
     }//GEN-LAST:event_box2ActionPerformed
 
     private void box3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box3ActionPerformed
-        play(0, 2, box3);
+        play(0, 2);
     }//GEN-LAST:event_box3ActionPerformed
 
     private void box4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box4ActionPerformed
-        play(1, 0, box4);
+        play(1, 0);
     }//GEN-LAST:event_box4ActionPerformed
 
     private void box5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box5ActionPerformed
-        play(1, 1, box5);
+        play(1, 1);
     }//GEN-LAST:event_box5ActionPerformed
 
     private void box6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box6ActionPerformed
-        play(1, 2, box6);
+        play(1, 2);
     }//GEN-LAST:event_box6ActionPerformed
 
     private void box7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box7ActionPerformed
-        play(2, 0, box7);
+        play(2, 0);
     }//GEN-LAST:event_box7ActionPerformed
 
     private void box8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box8ActionPerformed
-        play(2, 1, box8);
+        play(2, 1);
     }//GEN-LAST:event_box8ActionPerformed
 
     private void box9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box9ActionPerformed
-        play(2, 2, box9);
+        play(2, 2);
     }//GEN-LAST:event_box9ActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed

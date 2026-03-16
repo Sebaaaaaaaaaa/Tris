@@ -3,7 +3,7 @@ package tris;
 import gui.TrisBoardDialog;
 import javax.swing.JOptionPane;
 
-public class PvPGame {
+public class PvPGame implements Game {
     private final TrisBoard board;
     private final Player player1;
     private final Player player2;
@@ -24,7 +24,8 @@ public class PvPGame {
         inputBoard.setVisible(true);
     }
     
-    private void nextTurn() {
+    @Override
+    public void nextTurn() {
         if (board.checkWin()) {
             playerDataHandler.addWinner(currentPlayer.getName(), ((currentPlayer == player1) ? player2 : player1).getName());
             JOptionPane.showMessageDialog(
@@ -47,8 +48,9 @@ public class PvPGame {
             currentPlayer = (currentPlayer == player1) ? player2 : player1;
         }
     }
-
-    public void makeMove(int row, int col) {
+    
+    @Override
+    public void makePlayerMove(int row, int col) {
         Box box = board.getBox(row, col);
         if(box.isEmpty()) {
             box.setSymbol(this.getCurrentSymbol());
@@ -56,6 +58,7 @@ public class PvPGame {
         nextTurn();
     }
     
+    @Override
     public Symbol getCurrentSymbol() {
         return currentPlayer.getSymbol();
     }
