@@ -1,5 +1,5 @@
 package tris;
 
 public interface Algorithm {
-    void thinkMove(SuperRobot superRobot);
+    Box thinkMove(SuperRobot superRobot);
 }

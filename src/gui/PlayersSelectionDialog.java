@@ -147,11 +147,6 @@ public class PlayersSelectionDialog extends javax.swing.JDialog {
         player1TextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         player1TextField.setText("PLAYER1");
         player1TextField.setBorder(null);
-        player1TextField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                player1TextFieldFocusLost(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
@@ -194,11 +189,6 @@ public class PlayersSelectionDialog extends javax.swing.JDialog {
         player2TextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         player2TextField.setText("PLAYER2");
         player2TextField.setBorder(null);
-        player2TextField.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                player2TextFieldFocusLost(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
@@ -245,7 +235,29 @@ public class PlayersSelectionDialog extends javax.swing.JDialog {
                 "Error",
                 JOptionPane.ERROR_MESSAGE
             );
+        } else if (player1TextField.getText().isBlank()) {
+            player1TextField.setText("PLAYER1");
+            JOptionPane.showMessageDialog(
+               this,
+                "Player1 name MUST be set...",
+                "Error",
+                JOptionPane.ERROR_MESSAGE
+            );
+        } else if (player2TextField.getText().isBlank()) {
+            player2TextField.setText("PLAYER2");
+            JOptionPane.showMessageDialog(
+               this,
+                "Player2 name MUST be set...",
+                "Error",
+                JOptionPane.ERROR_MESSAGE
+            );
         } else {
+            String player1Name = player1TextField.getText();
+            String player2Name = player2TextField.getText();
+            if (player1Name.length() > 10) player1Name = player1Name.substring(0, 10);
+            player1TextField.setText(player1Name.toUpperCase());
+            if (player2Name.length() > 10) player2Name = player2Name.substring(0, 10);
+            player2TextField.setText(player2Name.toUpperCase());
             dispose();
         }
     }//GEN-LAST:event_okButtonActionPerformed
@@ -253,18 +265,6 @@ public class PlayersSelectionDialog extends javax.swing.JDialog {
     private void player1SymbolButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player1SymbolButtonActionPerformed
         player1Symbol = Symbol.X;
     }//GEN-LAST:event_player1SymbolButtonActionPerformed
-
-    private void player1TextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_player1TextFieldFocusLost
-        String text = player1TextField.getText();
-        if (text.length() > 10) text = text.substring(0, 10);
-        player1TextField.setText(text.toUpperCase());
-    }//GEN-LAST:event_player1TextFieldFocusLost
-
-    private void player2TextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_player2TextFieldFocusLost
-        String text = player2TextField.getText();
-        if (text.length() > 10) text = text.substring(0, 10);
-        player2TextField.setText(text.toUpperCase());
-    }//GEN-LAST:event_player2TextFieldFocusLost
 
     private void player2SymbolButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player2SymbolButtonActionPerformed
         player1Symbol = Symbol.O;

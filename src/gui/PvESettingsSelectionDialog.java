@@ -1,11 +1,11 @@
 package gui;
 
-public class DifficultySelectionDialog extends javax.swing.JDialog {
+public class PvESettingsSelectionDialog extends javax.swing.JDialog {
     
     private Integer difficulty = 1;
     private Boolean isPlayerStarting = true;
     
-    public DifficultySelectionDialog(java.awt.Frame parent, boolean modal) {
+    public PvESettingsSelectionDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
@@ -31,9 +31,7 @@ public class DifficultySelectionDialog extends javax.swing.JDialog {
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         setFocusable(false);
         setLocation(new java.awt.Point(760, 465));
-        setMaximumSize(new java.awt.Dimension(400, 200));
         setMinimumSize(new java.awt.Dimension(400, 200));
-        setPreferredSize(new java.awt.Dimension(400, 200));
         setResizable(false);
         setSize(new java.awt.Dimension(400, 150));
 

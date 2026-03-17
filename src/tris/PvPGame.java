@@ -8,8 +8,9 @@ public class PvPGame implements Game {
     private final Player player1;
     private final Player player2;
     private Player currentPlayer;
-    private final TrisBoardDialog inputBoard;
+    private TrisBoardDialog inputBoard;
     private final PvPTableModel playerDataHandler;
+    private final java.awt.Frame parentFrame;
 
     public PvPGame(Player player1, Player player2, java.awt.Frame parentFrame, PvPTableModel playerDataHandler) {
         board = new TrisBoard();
@@ -20,7 +21,10 @@ public class PvPGame implements Game {
         this.player2 = player2;
         currentPlayer = this.player1;
         
-        inputBoard = new TrisBoardDialog(parentFrame, false, this);
+        this.parentFrame = parentFrame;
+        
+        this.parentFrame.setVisible(false);
+        inputBoard = new TrisBoardDialog(this.parentFrame, false, this);
         inputBoard.setVisible(true);
     }
     
@@ -34,7 +38,7 @@ public class PvPGame implements Game {
                 "WINNER",
                 JOptionPane.INFORMATION_MESSAGE
             );
-            inputBoard.dispose();
+            tryContinuingGame();
         } else if (board.checkDraw()) {
             playerDataHandler.addDraw(player1.getName(), player2.getName());
             JOptionPane.showMessageDialog(
@@ -43,7 +47,7 @@ public class PvPGame implements Game {
                 "DRAW",
                 JOptionPane.INFORMATION_MESSAGE
             );
-            inputBoard.dispose();
+            tryContinuingGame();
         } else {
             currentPlayer = (currentPlayer == player1) ? player2 : player1;
         }
@@ -56,6 +60,25 @@ public class PvPGame implements Game {
             box.setSymbol(this.getCurrentSymbol());
         }
         nextTurn();
+    }
+    
+    private void tryContinuingGame() {
+        int choice = JOptionPane.showConfirmDialog(
+                inputBoard,
+                "Want to continue playing?",
+                "Game",
+                JOptionPane.YES_NO_OPTION
+        );
+        if (choice == JOptionPane.YES_OPTION) {
+            board.reset();
+            currentPlayer = player1;
+            inputBoard.dispose();
+            inputBoard = new TrisBoardDialog(parentFrame, false, this);
+            inputBoard.setVisible(true);
+        } else {
+            inputBoard.dispose();
+            parentFrame.setVisible(true);
+        }
     }
     
     @Override

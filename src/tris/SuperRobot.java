@@ -2,8 +2,7 @@ package tris;
 
 public class SuperRobot implements Player {
 
-    private Integer selectedRow;
-    private Integer selectedCol;
+    private Box selectedBox;
     private final Algorithm algorithm;
 
     public SuperRobot(Algorithm algorithm) {
@@ -20,23 +19,11 @@ public class SuperRobot implements Player {
         return Symbol.O;
     }
 
-    public Integer getSelectedRow() {
-        return selectedRow;
-    }
-
-    public Integer getSelectedCol() {
-        return selectedCol;
-    }
-    
-    public void setSelectedRow(Integer selectedRow) {
-        this.selectedRow = selectedRow;
-    }
-    
-    public void setSelectedCol(Integer selectedCol) {
-        this.selectedCol = selectedCol;
+    public Box getSelectedBox() {
+        return selectedBox;
     }
     
     public void play() {
-        algorithm.thinkMove(this);
+        selectedBox = algorithm.thinkMove(this);
     }
 }

@@ -1,43 +1,53 @@
 package tris;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class MediumAlgorithm implements Algorithm {
     
-    private final TrisBoard board;
+    private final TrisBoard playingTrisBoard;
     private final Random randomEngine = new Random();
     
-    public MediumAlgorithm(TrisBoard board) {
-        this.board = board;
+    public MediumAlgorithm(TrisBoard playingTrisBoard) {
+        this.playingTrisBoard = playingTrisBoard;
     }
 
     @Override
-    public void thinkMove(SuperRobot superRobot) {
+    public Box thinkMove(SuperRobot superRobot) {
         
-        for (int row = 0; row < 3; row++) {
-           for (int col = 0; col < 3; col++) {
-               if (board.isEmpty(row, col)) {
-                   Box box = board.getBox(row, col);
-                   box.setSymbol(Symbol.X);
-                   if (board.checkWin() || board.checkDraw()) {
-                       superRobot.setSelectedRow(row);
-                       superRobot.setSelectedCol(col);
-                       box.clear();
-                       return;
-                   }
-                   box.clear();
-               }
-           }
+        for (Box box : getPossibleMoves(playingTrisBoard)) {
+            TrisBoard testTrisBoard = new TrisBoard(playingTrisBoard);
+            testTrisBoard.getBox(box.getRow(), box.getCol()).setSymbol(Symbol.O);
+            if (testTrisBoard.checkWin()) return box;
+        }
+
+        for (Box box : getPossibleMoves(playingTrisBoard)) {
+            TrisBoard testTrisBoard = new TrisBoard(playingTrisBoard);
+            testTrisBoard.getBox(box.getRow(), box.getCol()).setSymbol(Symbol.X);
+            if (testTrisBoard.checkWin()) return box;
         }
         
         int row;
         int col;
+        
         do{
             row = randomEngine.nextInt(3);
             col = randomEngine.nextInt(3);
-        } while(!board.isEmpty(row, col));
-        superRobot.setSelectedRow(row);
-        superRobot.setSelectedCol(col);
+        } while(!playingTrisBoard.isEmpty(row, col));
         
+        return playingTrisBoard.getBox(row, col);
+        
+    }
+    
+    private ArrayList<Box> getPossibleMoves(TrisBoard board) {
+        ArrayList<Box> possibleMoves = new ArrayList<>();
+        for (int r = 0; r < 3; r++) {
+            for (int c = 0; c < 3; c++) {
+                if (board.isEmpty(r, c)) {
+                    possibleMoves.add(board.getBox(r, c));
+                }
+            }
+        }
+        return possibleMoves;
     }
 }

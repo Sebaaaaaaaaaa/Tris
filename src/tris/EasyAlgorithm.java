@@ -4,22 +4,23 @@ import java.util.Random;
 
 public class EasyAlgorithm implements Algorithm {
 
-    private final TrisBoard board;
+    private final TrisBoard playingTrisBoard;
     private final Random randomEngine = new Random();
     
-    public EasyAlgorithm(TrisBoard board) {
-        this.board = board;
+    public EasyAlgorithm(TrisBoard playingTrisBoard) {
+        this.playingTrisBoard = playingTrisBoard;
     }
 
     @Override
-    public void thinkMove(SuperRobot superRobot) {
+    public Box thinkMove(SuperRobot superRobot) {
         int row;
         int col;
+        
         do{
             row = randomEngine.nextInt(3);
             col = randomEngine.nextInt(3);
-        } while(!board.isEmpty(row, col));
-        superRobot.setSelectedRow(row);
-        superRobot.setSelectedCol(col);
+        } while(!playingTrisBoard.isEmpty(row, col));
+        
+        return playingTrisBoard.getBox(row, col);
     }
 }

@@ -188,7 +188,7 @@ public class MainTrisFrame extends javax.swing.JFrame {
     private void PveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PveButtonActionPerformed
         this.setVisible(false);
         
-        DifficultySelectionDialog difficultySelectionDialog = new DifficultySelectionDialog(this, true);
+        PvESettingsSelectionDialog difficultySelectionDialog = new PvESettingsSelectionDialog(this, true);
         difficultySelectionDialog.setVisible(true);
         
         new PvEGame(this, playerDataHandler, difficultySelectionDialog.getDifficulty(), difficultySelectionDialog.isPlayerStarting());

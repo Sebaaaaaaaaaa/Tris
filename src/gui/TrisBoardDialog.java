@@ -65,11 +65,6 @@ public class TrisBoardDialog extends javax.swing.JDialog {
         setPreferredSize(new java.awt.Dimension(500, 500));
         setResizable(false);
         setSize(new java.awt.Dimension(700, 700));
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
-        });
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new java.awt.GridBagLayout());
@@ -320,10 +315,6 @@ public class TrisBoardDialog extends javax.swing.JDialog {
     private void box9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_box9ActionPerformed
         play(2, 2);
     }//GEN-LAST:event_box9ActionPerformed
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        parent.setVisible(true);
-    }//GEN-LAST:event_formWindowClosed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton box1;

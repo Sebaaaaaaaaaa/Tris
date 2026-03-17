@@ -22,10 +22,13 @@ public class PvPTable extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         setFocusable(false);
+        setLocation(new java.awt.Point(660, 390));
         setPreferredSize(new java.awt.Dimension(600, 300));
         setResizable(false);
 
         dataTable.setModel(model);
+        dataTable.setFocusable(false);
+        dataTable.setRowHeight(40);
         jScrollPane1.setViewportView(dataTable);
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);

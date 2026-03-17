@@ -3,13 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/Seba/NetBeansProjects/Tris/src/gui/TrisBoardDialog.java</file>
             <file>file:/home/Seba/NetBeansProjects/Tris/src/tris/PvEGame.java</file>
+            <file>file:/home/Seba/NetBeansProjects/Tris/src/gui/TrisBoardDialog.java</file>
             <file>file:/home/Seba/NetBeansProjects/Tris/src/tris/SuperRobot.java</file>
-            <file>file:/home/Seba/NetBeansProjects/Tris/src/tris/PvPGame.java</file>
-            <file>file:/home/Seba/NetBeansProjects/Tris/src/gui/DifficultySelectionDialog.java</file>
-            <file>file:/home/Seba/NetBeansProjects/Tris/src/gui/MainTrisFrame.java</file>
-            <file>file:/home/Seba/NetBeansProjects/Tris/src/tris/Main.java</file>
+            <file>file:/home/Seba/NetBeansProjects/Tris/src/tris/EasyAlgorithm.java</file>
+            <file>file:/home/Seba/NetBeansProjects/Tris/src/tris/MediumAlgorithm.java</file>
+            <file>file:/home/Seba/NetBeansProjects/Tris/src/tris/HardAlgorithm.java</file>
         </group>
     </open-files>
 </project-private>

@@ -6,35 +6,34 @@ import javax.swing.JOptionPane;
 public class PvEGame implements Game {
     private final TrisBoard board;
     private final Player player;
-    private SuperRobot superRobot;
-    private final TrisBoardDialog inputBoard;
+    private final SuperRobot superRobot;
+    private TrisBoardDialog inputBoard;
     private final PvPTableModel playerDataHandler;
     private Player currentPlayer;
+    private final Boolean isPlayerStarting;
+    private final java.awt.Frame parentFrame;
 
     public PvEGame(java.awt.Frame parentFrame, PvPTableModel playerDataHandler, Integer difficulty, Boolean isPlayerStarting) {
         board = new TrisBoard();
         
-        switch (difficulty) {
-            case 1:
-                superRobot = new SuperRobot(new EasyAlgorithm(board));
-                break;
-            case 2:  
-                superRobot = new SuperRobot(new MediumAlgorithm(board));
-                break;
-            case 3:
-                // superRobot = new SuperRobot();
-                break;
-            default:
-                superRobot = new SuperRobot(new EasyAlgorithm(board));
-        }
+        superRobot = switch (difficulty) {
+            case 1 -> new SuperRobot(new EasyAlgorithm(board));
+            case 2 -> new SuperRobot(new MediumAlgorithm(board));
+            case 3 -> new SuperRobot(new HardAlgorithm(board));
+            default -> new SuperRobot(new EasyAlgorithm(board));
+        };
         player = new Human(Symbol.X, "PLAYER");
         
         this.playerDataHandler = playerDataHandler;
         
-        inputBoard = new TrisBoardDialog(parentFrame, false, this);
+        this.parentFrame = parentFrame;
+        
+        inputBoard = new TrisBoardDialog(this.parentFrame, false, this);
         inputBoard.setVisible(true);
         
-        if (!isPlayerStarting) startSuperRobot();
+        this.isPlayerStarting = isPlayerStarting;
+        
+        if (!this.isPlayerStarting) startSuperRobot();
         else currentPlayer = player;
         
     }
@@ -51,13 +50,11 @@ public class PvEGame implements Game {
     
     private void makeSuperobotMove() {
         superRobot.play();
-        Integer row = superRobot.getSelectedRow();
-        Integer col = superRobot.getSelectedCol();
-        Box box = board.getBox(row, col);
+        Box box = superRobot.getSelectedBox();
         if(box.isEmpty()) {
             box.setSymbol(this.getCurrentSymbol());
         }
-        inputBoard.setCorrespondingBox(row, col);
+        inputBoard.setCorrespondingBox(box.getRow(), box.getCol());
         nextTurn();
     }
     
@@ -71,7 +68,7 @@ public class PvEGame implements Game {
                 "WINNER",
                 JOptionPane.INFORMATION_MESSAGE
             );
-            inputBoard.dispose();
+            tryContinuingGame();
         } else if (board.checkDraw()) {
             playerDataHandler.addDraw(player.getName(), superRobot.getName());
             JOptionPane.showMessageDialog(
@@ -80,7 +77,7 @@ public class PvEGame implements Game {
                 "DRAW",
                 JOptionPane.INFORMATION_MESSAGE
             );
-            inputBoard.dispose();
+            tryContinuingGame();
         } else {
             currentPlayer = (currentPlayer == player) ? superRobot : player;
             if (currentPlayer == superRobot) makeSuperobotMove();
@@ -99,5 +96,25 @@ public class PvEGame implements Game {
     @Override 
     public Symbol getCurrentSymbol() {
         return currentPlayer.getSymbol();
+    }
+    
+    private void tryContinuingGame() {
+        int choice = JOptionPane.showConfirmDialog(
+                inputBoard,
+                "Want to continue playing?",
+                "Game",
+                JOptionPane.YES_NO_OPTION
+        );
+        if (choice == JOptionPane.YES_OPTION) {
+            board.reset();
+            inputBoard.dispose();
+            inputBoard = new TrisBoardDialog(parentFrame, false, this);
+            inputBoard.setVisible(true);
+            if (!isPlayerStarting) startSuperRobot();
+            else currentPlayer = player;
+        } else {
+            inputBoard.dispose();
+            parentFrame.setVisible(true);
+        }
     }
 }
